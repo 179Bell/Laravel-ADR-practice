@@ -33,6 +33,9 @@ RUN apt-get update \
     bcmath \
   && composer config -g process-timeout 3600 \
   && composer config -g repos.packagist composer https://packagist.org
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install npm@latest -g
 
 FROM base AS development
 
