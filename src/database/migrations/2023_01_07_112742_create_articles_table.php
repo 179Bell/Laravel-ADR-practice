@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id()->comment('投稿ID');
-            $table->foreignId('users')->comment('ユーザーID')->onDelete('cascade');
+            $table->foreignId('user_id')->comment('ユーザーID')->onDelete('cascade');
             $table->string('title')->comment('タイトル');
             $table->string('content')->comment('記事本文');
             $table->timestamps();
