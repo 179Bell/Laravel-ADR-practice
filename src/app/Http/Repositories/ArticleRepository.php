@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ArticleRepository implements ArticleRepositoryInterface
 {
+    /**
+     * @return Collection
+     */
     public function getAll(): Collection
     {
         $articles = Article::all();

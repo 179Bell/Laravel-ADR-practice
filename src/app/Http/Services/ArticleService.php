@@ -11,12 +11,19 @@ final class ArticleService extends Controller
 {
     protected $articleRepository;
 
+    /**
+     * @param ArticleRepositoryInterface $articleRepository
+     */
     public function __construct(
         ArticleRepositoryInterface $articleRepository
     )
     {
         $this->articleRepository = $articleRepository;
     }
+
+    /**
+     * @return Collection
+     */
     public function getArticles()
     {
         $article = $this->articleRepository->getAll();

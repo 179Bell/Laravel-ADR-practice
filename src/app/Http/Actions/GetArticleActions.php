@@ -15,6 +15,10 @@ final class GetArticleActions extends Controller
     private $articleResponder;
     private $articleService;
 
+    /**
+     * @param ArticleService $articleService
+     * @param ArticleResponder $articleResponder
+     */
     public function __construct(
         ArticleService $articleService,
         ArticleResponder $articleResponder
@@ -24,6 +28,9 @@ final class GetArticleActions extends Controller
         $this->responder = $articleResponder;
     }
 
+    /**
+     * @return Response
+     */
     public function __invoke(): Response
     {
         $articles = $this->service->getArticles();
