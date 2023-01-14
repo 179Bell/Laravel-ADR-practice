@@ -30,6 +30,7 @@ final class ArticleResponder
      */
     public function response(Collection $articles): Response
     {
-        return $this->response->setContent($this->view->make('article.index', $articles));
+        return $this->response->setContent(
+            $this->view->make('article.index', ['articles' => $articles]));
     }
 }
