@@ -6,10 +6,8 @@ namespace App\Http\Responders;
 
 use Illuminate\Http\Response;
 use Illuminate\Contracts\View\Factory as ViewFactory;
-use App\Models\Article as ArticleModel;
-use Illuminate\Database\Eloquent\Collection;
 
-final class ArticleResponder
+final class CreateArticleResponder
 {
     protected $response;
     protected $view;
@@ -25,12 +23,10 @@ final class ArticleResponder
     }
 
     /**
-     * @param Collection $article
      * @return Response
      */
-    public function response(Collection $articles): Response
+    public function response(): Response
     {
-        return $this->response->setContent(
-            $this->view->make('article.index', ['articles' => $articles]));
+        return $this->response->setContent($this->view->make('article.create'));
     }
 }

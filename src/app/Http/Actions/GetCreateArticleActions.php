@@ -5,16 +5,13 @@ declare(strict_types=1);
 namespace App\Http\Actions;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\ArticleService;
-use App\Http\Responders\IndexArticleResponder;
+use App\Http\Responders\CreateArticleResponder as ArticleResponder;
 use Illuminate\Http\Response;
-use Illuminate\Http\Request;
+use App\Http\Services\ArticleService;
+use App\Http\Requests\ArticleRequest as Request;
 
-final class GetArticleActions extends Controller
+final class GetCreateArticleActions extends Controller
 {
-    private $articleResponder;
-    private $articleService;
-
     /**
      * @param ArticleService $articleService
      * @param ArticleResponder $articleResponder
@@ -24,8 +21,8 @@ final class GetArticleActions extends Controller
         ArticleResponder $articleResponder
     )
     {
-        $this->service = $articleService;
-        $this->responder = $articleResponder;
+        $this->articleService = $articleService;
+        $this->articleResponder = $articleResponder;
     }
 
     /**
@@ -33,7 +30,6 @@ final class GetArticleActions extends Controller
      */
     public function __invoke(): Response
     {
-        $articles = $this->service->getArticles();
-        return $this->responder->response($articles);
+        return $this->articleResponder->response();
     }
 }
