@@ -1,8 +1,6 @@
 <?php
 
-// use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-// use App\Http\Actions\GetArticleActions;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', \App\Http\Actions\GetArticleActions::class)->name('article.index');
 
-Route::get('/create', \App\Http\Actions\GetCreateArticleActions::class)->name('articles.create');
-// Route::post('/create', \App\Http\Actions\PostCreateArticleActions::class);
+Route::middleware(['auth'])->group(function () {
+    Route::post('/create', \App\Http\Actions\PostCreateArticleActions::class)->name('article.post');
+    Route::get('/create', \App\Http\Actions\GetCreateArticleActions::class)->name('article.create');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
