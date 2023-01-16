@@ -6,9 +6,8 @@ namespace App\Http\Actions;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\ArticleService;
-use App\Http\Responders\IndexArticleResponder;
+use App\Http\Responders\IndexArticleResponder as ArticleResponder;
 use Illuminate\Http\Response;
-use Illuminate\Http\Request;
 
 final class GetArticleActions extends Controller
 {
