@@ -29,7 +29,6 @@
     @include('layouts.header')
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            <h1 class="d-flex justify-content-center mt-4">{{ config('app.name') }}</h1>
             <!-- Page Content -->
             <main>
                 <div class="container mt-2">
