@@ -7,11 +7,15 @@
 
     <form action="{{ route('article.post') }}" method="POST">
         @csrf
-        <label for="title" name="title">タイトル</label>
-        <input type="text" name="title" id="title" placeholder="タイトルを入力">
-        <label for="content" name="content">本文</label>
-        <textarea name="content" id="" cols="30" rows="10"></textarea>
-        <button type="submit">投稿する</button>
+        <div class="input-group">
+            <label for="title" name="title" class="form-label">タイトル</label>
+            <input type="text" name="title" id="title" placeholder="タイトルを入力" class="form-control">
+        </div>
+        <div class="input-group">
+            <label for="content" name="content" class="form-label">本文</label>
+            <textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <button class="btn btn-success" type="submit">投稿する</button>
     </form>
 
 @endsection
