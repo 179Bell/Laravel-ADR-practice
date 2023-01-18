@@ -26,12 +26,18 @@ final class PostCreateArticleActions extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param array $data
      * @return RedirectResponse
      */
     public function __invoke(Request $request): RedirectResponse
     {
-        $article = $this->articleService->createArticle($request);
+        $data = [
+            'user_id' => Auth::id(),
+            'title' => $request->title,
+            'content' => $request->content
+        ];
+
+        $article = $this->articleService->createArticle($data);
         return redirect()->route('article.index', [$article]);
     }
 }

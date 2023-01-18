@@ -20,8 +20,8 @@ interface ArticleRepositoryInterface
     /**
      * 記事を作成する
      *
-     * @param Request $request
+     * @param array $data
      * @return Article
      */
-    public function create(Request $request): Article;
+    public function create(array $data): Article;
 }

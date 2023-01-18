@@ -21,15 +21,15 @@ class ArticleRepository implements ArticleRepositoryInterface
     }
 
     /**
-     * @param Request $request
+     * @param array $data
      * @return Article $article
      */
-    public function create(Request $request): Article
+    public function create(array $data): Article
     {
         $articles = Article::create([
-            'user_id' => Auth::id(),
-            'title' => $request['title'],
-            'content' => $request['content']
+            'user_id' => $data['user_id'],
+            'title' => $data['title'],
+            'content' => $data['content']
         ]);
 
         return $articles;
