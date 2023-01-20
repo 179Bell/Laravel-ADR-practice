@@ -24,4 +24,12 @@ interface ArticleRepositoryInterface
      * @return Article
      */
     public function create(array $data): Article;
+
+    /**
+     * 記事の詳細を取得
+     *
+     * @param array $data
+     * @return Article
+     */
+    public function getArticleDetail(int $user_id): Article;
 }

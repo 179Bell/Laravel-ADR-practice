@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', \App\Http\Actions\GetArticleActions::class)->name('article.index');
+Route::get('/{id}', \App\Http\Actions\GetDetailArticleActions::class)->name('article.detail');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/create', \App\Http\Actions\PostCreateArticleActions::class)->name('article.post');

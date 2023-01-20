@@ -25,6 +25,7 @@ final class ArticleService extends Controller
     }
 
     /**
+     * 投稿を全件取得
      * @return Collection
      */
     public function getArticles()
@@ -34,12 +35,26 @@ final class ArticleService extends Controller
     }
 
     /**
+     * 投稿を新規作成
+     *
      * @param array $data
      * @return Article $article
      */
     public function createArticle(array $data): Article
     {
         $article = $this->articleRepository->create($data);
+        return $article;
+    }
+
+    /**
+     *投稿の詳細を取得
+     *
+     * @param array $data
+     * @return Article
+     */
+    public function getArticleDetail(array $data): Article
+    {
+        $article = $this->articleRepository->getDetail();
         return $article;
     }
 }

@@ -11,19 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleRepository implements ArticleRepositoryInterface
 {
-    /**
-     * @return Collection
-     */
+
     public function getAll(): Collection
     {
         $articles = Article::all();
         return $articles;
     }
 
-    /**
-     * @param array $data
-     * @return Article $article
-     */
     public function create(array $data): Article
     {
         $articles = Article::create([
@@ -33,5 +27,11 @@ class ArticleRepository implements ArticleRepositoryInterface
         ]);
 
         return $articles;
+    }
+
+    public function getArticleDetail(int $user_id): Article
+    {
+        $article = Article::find($user_id);
+        return $article;
     }
 }
