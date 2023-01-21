@@ -5,5 +5,7 @@
 @section('content')
     <h2 class="d-flex justify-content-center">詳細ページ</h2>
 
-
+    @php
+        ddd($article);
+    @endphp
 @endsection

@@ -29,9 +29,9 @@ class ArticleRepository implements ArticleRepositoryInterface
         return $articles;
     }
 
-    public function getArticleDetail(int $user_id): Article
+    public function getArticleDetail(string $article_id): Article
     {
-        $article = Article::find($user_id);
+        $article = Article::find($article_id);
         return $article;
     }
 }

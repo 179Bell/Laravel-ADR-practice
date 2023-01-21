@@ -6,8 +6,9 @@ namespace App\Http\Actions;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\ArticleService;
-use App\Http\Responders\IndexArticleResponder as ArticleResponder;
+use App\Http\Responders\DetailArticleResponder as ArticleResponder;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 final class GetDetailArticleActions extends Controller
 {
@@ -32,8 +33,8 @@ final class GetDetailArticleActions extends Controller
      */
     public function __invoke(Request $request): Response
     {
-        $user_id = $request->id;
-        $article = $this->service->getArticleDetail($user_id);
+        $article_id = $request->id;
+        $article = $this->service->getArticleDetail($article_id);
         return $this->responder->response($article);
     }
 }

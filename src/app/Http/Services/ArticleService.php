@@ -49,12 +49,12 @@ final class ArticleService extends Controller
     /**
      *投稿の詳細を取得
      *
-     * @param array $data
+     * @param string $article_id
      * @return Article
      */
-    public function getArticleDetail(array $data): Article
+    public function getArticleDetail(string $article_id): Article
     {
-        $article = $this->articleRepository->getDetail();
+        $article = $this->articleRepository->getArticleDetail($article_id);
         return $article;
     }
 }

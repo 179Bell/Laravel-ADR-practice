@@ -8,7 +8,7 @@
             @foreach ($articles as $article)
             <div class="col">
                 <div class="card">
-                    <a href="">
+                    <a href="{{ route('article.detail' , ['id' => $article->id]) }}">
                         <div class="card-body">
                             <h5>{{ $article->title }}</h5>
                             <p class="card-text">

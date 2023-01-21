@@ -28,8 +28,8 @@ interface ArticleRepositoryInterface
     /**
      * 記事の詳細を取得
      *
-     * @param array $data
+     * @param string $article_id
      * @return Article
      */
-    public function getArticleDetail(int $user_id): Article;
+    public function getArticleDetail(string $article_id): Article;
 }
