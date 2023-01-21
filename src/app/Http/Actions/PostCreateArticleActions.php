@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Actions;
 
 use App\Http\Controllers\Controller;
-use App\Http\Responders\AfterCreateArticleResponder as ArticleResponder;
 use App\Http\Requests\ArticleRequest as Request;
 use App\Http\Services\ArticleService;
 use Illuminate\Http\RedirectResponse;
@@ -18,11 +17,9 @@ final class PostCreateArticleActions extends Controller
      */
     public function __construct(
         ArticleService $articleService,
-        ArticleResponder $articleResponder
     )
     {
         $this->articleService = $articleService;
-        $this->articleResponder = $articleResponder;
     }
 
     /**

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', \App\Http\Actions\GetArticleActions::class)->name('article.index');
-Route::get('/{id}', \App\Http\Actions\GetDetailArticleActions::class)->name('article.detail');
+Route::get('/article/{id}', \App\Http\Actions\GetDetailArticleActions::class)->name('article.detail');
 
 
 Route::middleware(['auth'])->group(function () {
