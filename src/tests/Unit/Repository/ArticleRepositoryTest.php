@@ -52,4 +52,23 @@ class ArticleRepositoryTest extends TestCase
             'content' => $result->content
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function 特定の記事のみ取得できる()
+    {
+        $user = User::factory()->create();
+
+        $article = $this->articleRepository->create([
+            'user_id' => $user->id,
+            'title' => 'test title',
+            'content' => 'test content',
+        ]);
+
+        $result = $this->articleRepository->getArticleDetail($article->id);
+        $this->assertSame($article->id, $result->id);
+        $this->assertSame($article->title, $result->title);
+        $this->assertSame($article->content, $result->content);
+    }
 }

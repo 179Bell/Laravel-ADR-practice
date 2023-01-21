@@ -39,6 +39,25 @@ class ArticleServiceTest extends TestCase
     /**
      * @test
      */
+    public function ログインユーザーは投稿ページにアクセスできる()
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->get(route('article.create'))
+            ->assertViewIs('article.create')->assertStatus(200);
+    }
+
+    /**
+     * @test
+     */
+    public function ログインユーザー以外は投稿ページにアクセスできない()
+    {
+        $this->get(route('article.create'))->assertStatus(302);
+    }
+
+    /**
+     * @test
+     */
     public function 記事を投稿してDBに値が存在する()
     {
         $user = User::factory()->create();
@@ -49,13 +68,47 @@ class ArticleServiceTest extends TestCase
             'content' => 'test content',
         ];
 
-        $result = $this->actingAs($user)->articleService->createArticle($request);
+        $this->actingAs($user)->articleService->createArticle($request);
 
         $this->assertDatabaseHas('articles', [
             'user_id' => $user->id,
             'title' => 'test title',
             'content' => 'test content',
         ]);
+    }
+
+    /**
+     * @test
+     */
+    public function 詳細ページにアクセスしてページが表示される()
+    {
+        $user = User::factory()->create();
+
+        $article = $this->actingAs($user)->articleService->createArticle([
+            'user_id' => $user->id,
+            'title' => 'test title',
+            'content' => 'test content',
+        ]);
+
+        $response = $this->get(route('article.detail', ['id' => $article->id]));
+        $response->assertViewIs('article.detail');
+    }
+
+    /**
+     * @test
+     */
+    public function 詳細ページにアクセスして特定の投稿が表示される()
+    {
+        $user = User::factory()->create();
+
+        $article = $this->actingAs($user)->articleService->createArticle([
+            'user_id' => $user->id,
+            'title' => 'test title',
+            'content' => 'test content',
+        ]);
+
+        $response = $this->get(route('article.detail', ['id' => $article->id]));
+        $response->assertViewHas('article', $article);
     }
 }
 
