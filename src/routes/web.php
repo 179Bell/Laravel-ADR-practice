@@ -19,6 +19,7 @@ Route::get('/article/{id}', \App\Http\Actions\GetDetailArticleActions::class)->n
 Route::middleware(['auth'])->group(function () {
     Route::post('/create', \App\Http\Actions\PostCreateArticleActions::class)->name('article.post');
     Route::get('/create', \App\Http\Actions\GetCreateArticleActions::class)->name('article.create');
+    Route::post('/article/{id}', \App\Http\Actions\DeleteArticleActions::class)->name('article.delete');
 });
 
 Route::get('/dashboard', function () {

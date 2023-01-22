@@ -4,6 +4,11 @@
 
 @section('content')
     <h2 class="d-flex justify-content-center">トップページ</h2>
+        @if (session('delete_success'))
+            <div class="alert alert-success">
+                {{ session('delete_success') }}
+            </div>
+        @endif
     <div class="row row-cols-md-3 g-3">
             @foreach ($articles as $article)
             <div class="col">

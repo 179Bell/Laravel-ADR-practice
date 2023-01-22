@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest as Request;
 use App\Http\Services\ArticleService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 final class PostCreateArticleActions extends Controller
 {

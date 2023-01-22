@@ -34,4 +34,10 @@ class ArticleRepository implements ArticleRepositoryInterface
         $article = Article::find($article_id);
         return $article;
     }
+
+    public function deleteArticle(string $article_id): int
+    {
+        $status = Article::destroy($article_id);
+        return $status;
+    }
 }

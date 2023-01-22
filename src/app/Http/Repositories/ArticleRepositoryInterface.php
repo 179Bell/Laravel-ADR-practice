@@ -26,10 +26,18 @@ interface ArticleRepositoryInterface
     public function create(array $data): Article;
 
     /**
-     * 記事の詳細を取得
+     * 記事の詳細を取得する
      *
      * @param string $article_id
      * @return Article
      */
     public function getArticleDetail(string $article_id): Article;
+
+    /**
+     * 記事を削除する
+     *
+     * @param string $article_id
+     * @return int  $status 1:success 0:fail
+     */
+    public function deleteArticle(string $article_id): int;
 }

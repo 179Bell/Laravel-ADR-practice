@@ -57,4 +57,16 @@ final class ArticleService extends Controller
         $article = $this->articleRepository->getArticleDetail($article_id);
         return $article;
     }
+
+    /**
+     * 投稿を削除
+     *
+     * @param string $article_id
+     * @return integer
+     */
+    public function deleteArticle(string $article_id): int
+    {
+        $status = $this->articleRepository->deleteArticle($article_id);
+        return $status;
+    }
 }
