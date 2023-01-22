@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleRepository implements ArticleRepositoryInterface
 {
+    private const FAIL_STATUS = 0;
 
     public function getAll(): Collection
     {
@@ -37,7 +38,12 @@ class ArticleRepository implements ArticleRepositoryInterface
 
     public function deleteArticle(string $article_id): int
     {
-        $status = Article::destroy($article_id);
+        $article = Article::find($article_id);
+        if (Auth::user()->can('deleteArticle', $article)) {
+            $status = Article::destroy($article_id);
+        } else {
+            $status = self::FAIL_STATUS;
+        }
         return $status;
     }
 }

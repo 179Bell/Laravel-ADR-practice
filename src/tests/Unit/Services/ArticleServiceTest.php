@@ -110,6 +110,38 @@ class ArticleServiceTest extends TestCase
         $response = $this->get(route('article.detail', ['id' => $article->id]));
         $response->assertViewHas('article', $article);
     }
+
+    /**
+     * @test
+     */
+    public function 投稿ユーザーの投稿のみ削除できる()
+    {
+        $user = User::factory()->create();
+
+        $article = $this->actingAs($user)->articleService->createArticle([
+            'user_id' => $user->id,
+            'title' => 'test title',
+            'content' => 'test content',
+        ]);
+
+        $this->assertSame($this->actingAs($user)->articleService->deleteArticle($article->id), 1);
+    }
+
+    /**
+     * @test
+     */
+    public function 投稿ユーザー以外は削除ができない()
+    {
+        $user = User::factory()->create();
+
+        $article = $this->actingAs($user)->articleService->createArticle([
+            'user_id' => 3,
+            'title' => 'test title',
+            'content' => 'test content',
+        ]);
+
+        $this->assertSame($this->actingAs($user)->articleService->deleteArticle($article->id), 0);
+    }
 }
 
 
