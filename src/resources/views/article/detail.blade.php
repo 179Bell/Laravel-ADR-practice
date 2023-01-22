@@ -17,6 +17,6 @@
         @csrf
         <button class="btn btn-danger">削除する</button>
     </form>
-        <button class="btn btn-success" onclick="location.href='#">編集する</button>
+        <button class="btn btn-success" onclick="location.href='{{ route('article.edit', ['id' => $article->id]) }}'">編集する</button>
     @endif
 @endsection

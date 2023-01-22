@@ -20,6 +20,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/create', \App\Http\Actions\PostCreateArticleActions::class)->name('article.post');
     Route::get('/create', \App\Http\Actions\GetCreateArticleActions::class)->name('article.create');
     Route::post('/article/{id}', \App\Http\Actions\DeleteArticleActions::class)->name('article.delete');
+    Route::get('/edit/{id}', \App\Http\Actions\GetEditArticleActions::class)->name('article.edit');
+    // Route::post('/edit/{id}', \App\Http\Actions\PostEditArticleActions::class)->name('article.update');
 });
 
 Route::get('/dashboard', function () {

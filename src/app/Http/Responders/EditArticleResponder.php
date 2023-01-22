@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 
 
-final class DetailArticleResponder
+final class EditArticleResponder
 {
     protected $response;
     protected $view;
@@ -30,6 +30,6 @@ final class DetailArticleResponder
  */
     public function response(Article $article): Response
     {
-        return $this->response->setContent($this->view->make('article.detail',  ['article' => $article]));
+        return $this->response->setContent($this->view->make('article.edit',  ['article' => $article]));
     }
 }
