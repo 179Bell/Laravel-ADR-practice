@@ -69,4 +69,16 @@ final class ArticleService extends Controller
         $status = $this->articleRepository->deleteArticle($article_id);
         return $status;
     }
+
+    /**
+     * 投稿を更新
+     *
+     * @param array $data
+     * @return int
+     */
+    public function updateArticle(array $data): int
+    {
+        $status = $this->articleRepository->updateArticle($data);
+        return $status;
+    }
 }

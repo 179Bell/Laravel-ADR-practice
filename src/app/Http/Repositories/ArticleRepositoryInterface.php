@@ -40,4 +40,12 @@ interface ArticleRepositoryInterface
      * @return int  $status 1:success 0:fail
      */
     public function deleteArticle(string $article_id): int;
+
+    /**
+     * 投稿を更新する
+     *
+     * @param array $data
+     * @return int $status 1:success 0:fail
+     */
+    public function updateArticle(array $data): int;
 }

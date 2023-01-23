@@ -14,4 +14,9 @@ class ArticlePolicy
     {
         return $user->id === $article->user_id;
     }
+
+    public function updateArticle(User $user, Article $article)
+    {
+        return $user->id === $article->user_id;
+    }
 }

@@ -5,11 +5,11 @@
 @section('content')
     <h2 class="d-flex justify-content-center">編集ページ</h2>
 
-    <form action="{{ route('article.post') }}" method="POST">
+    <form action="{{ route('article.update', ['id' => $article->id]) }}" method="POST">
         @csrf
         <div class="input-group">
             <label for="title" name="title" class="form-label">タイトル</label>
-            <input type="text" name="title" id="title" placeholder="タイトルを入力" value="{{ $article->title }}" class="form-control">
+            <input type="text" name="title" id="title" value="{{ $article->title }}" class="form-control">
         </div>
         <div class="input-group">
             <label for="content" name="content" class="form-label">本文</label>

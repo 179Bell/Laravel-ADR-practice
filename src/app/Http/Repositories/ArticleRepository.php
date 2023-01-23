@@ -46,4 +46,18 @@ class ArticleRepository implements ArticleRepositoryInterface
         }
         return $status;
     }
+
+    public function updateArticle(array $data): int
+    {
+        $article = Article::find($data['id']);
+        if (Auth::user()->can('updateArticle', $article)) {
+            $status = Article::where('id', $data['id'])->update([
+                'title' => $data['title'],
+                'content' => $data['content']
+            ]);
+        } else {
+            $status = self::FAIL_STATUS;
+        }
+        return $status;
+    }
 }

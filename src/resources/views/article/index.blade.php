@@ -8,6 +8,10 @@
             <div class="alert alert-success">
                 {{ session('delete_success') }}
             </div>
+        @elseif (session('update_success'))
+            <div class="alert alert-success">
+                {{ session('update_success') }}
+            </div>
         @endif
     <div class="row row-cols-md-3 g-3">
             @foreach ($articles as $article)
