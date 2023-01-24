@@ -142,6 +142,38 @@ class ArticleServiceTest extends TestCase
 
         $this->assertSame($this->actingAs($user)->articleService->deleteArticle($article->id), 0);
     }
+
+    /**
+     * @test
+     */
+    public function ログインユーザーが編集ページにアクセスできる()
+    {
+        $user = User::factory()->create();
+
+        $article = $this->actingAs($user)->articleService->createArticle([
+            'user_id' => $user->id,
+            'title' => 'test title',
+            'content' => 'test content',
+        ]);
+
+        $this->actingAs($user)->get(route('article.detail', ['id' => $article->id]))->assertStatus(200);
+    }
+
+    /**
+     * @test
+     */
+    public function ログインユーザー以外の編集ページにアクセスできない()
+    {
+        $user = User::factory()->create();
+
+        $article = $this->actingAs($user)->articleService->createArticle([
+            'user_id' => 3,
+            'title' => 'test title',
+            'content' => 'test content',
+        ]);
+
+        $this->actingAs($user)->get(route('article.detail', ['id' => $article->id]))->assertStatus(403);
+    }
 }
 
 
