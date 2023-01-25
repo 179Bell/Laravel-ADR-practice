@@ -31,7 +31,6 @@ class ArticleServiceTest extends TestCase
 
         $response = $this->get('/');
 
-        // ステータスコードとどの画面が表示されているかの検証
         $response->assertStatus(200)
             ->assertViewIs('article.index');
     }
@@ -156,7 +155,7 @@ class ArticleServiceTest extends TestCase
             'content' => 'test content',
         ]);
 
-        $this->actingAs($user)->get(route('article.edit', ['id' => $article->id]))->assertStatus(200);
+        $this->actingAs($user)->get(route('article.edit', ['id' => $article->id]))->assertViewIs('article.edit')->assertStatus(200);
     }
 
     /**
@@ -173,6 +172,50 @@ class ArticleServiceTest extends TestCase
         ]);
 
         $this->actingAs($user)->get(route('article.edit', ['id' => $article->id]))->assertStatus(403);
+    }
+
+    /**
+     * @test
+     */
+    public function 記事を更新することができる()
+    {
+        $user = User::factory()->create();
+
+        $article = $this->actingAs($user)->articleService->createArticle([
+            'user_id' => $user->id,
+            'title' => 'test title',
+            'content' => 'test content',
+        ]);
+
+        $status = $this->actingAs($user)->articleService->updateArticle([
+            'id' => $article->id,
+            'title' => 'update title',
+            'content' => 'update content',
+        ]);
+
+        $this->assertSame(1, $status);
+    }
+
+    /**
+     * @test
+     */
+    public function 記事を投稿したユーザー以外の投稿は更新できない()
+    {
+        $user = User::factory()->create();
+
+        $article = $this->actingAs($user)->articleService->createArticle([
+            'user_id' => 3,
+            'title' => 'test title',
+            'content' => 'test content',
+        ]);
+
+        $status = $this->actingAs($user)->articleService->updateArticle([
+            'id' => $article->id,
+            'title' => 'update title',
+            'content' => 'update content',
+        ]);
+
+        $this->assertSame(0, $status);
     }
 }
 
