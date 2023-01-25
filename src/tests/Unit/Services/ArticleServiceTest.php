@@ -156,7 +156,7 @@ class ArticleServiceTest extends TestCase
             'content' => 'test content',
         ]);
 
-        $this->actingAs($user)->get(route('article.detail', ['id' => $article->id]))->assertStatus(200);
+        $this->actingAs($user)->get(route('article.edit', ['id' => $article->id]))->assertStatus(200);
     }
 
     /**
@@ -172,7 +172,7 @@ class ArticleServiceTest extends TestCase
             'content' => 'test content',
         ]);
 
-        $this->actingAs($user)->get(route('article.detail', ['id' => $article->id]))->assertStatus(403);
+        $this->actingAs($user)->get(route('article.edit', ['id' => $article->id]))->assertStatus(403);
     }
 }
 
