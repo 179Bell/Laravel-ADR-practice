@@ -35,7 +35,7 @@ final class GetEditArticleActions extends Controller
     public function __invoke(Request $request): Response
     {
         $article_id = $request->id;
-        $articles = $this->service->getArticleDetail($article_id);
+        $articles = $this->service->editArticle($article_id);
         return $this->responder->response($articles);
     }
 }

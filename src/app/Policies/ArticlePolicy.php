@@ -10,13 +10,18 @@ class ArticlePolicy
 {
     use HandlesAuthorization;
 
-    public function deleteArticle(User $user, Article $article)
+    public function delete(User $user, Article $article)
     {
         return $user->id === $article->user_id;
     }
 
-    public function updateArticle(User $user, Article $article)
+    public function update(User $user, Article $article)
     {
+        return $user->id === $article->user_id;
+    }
+
+    public function edit(User $user, Article $article){
+
         return $user->id === $article->user_id;
     }
 }

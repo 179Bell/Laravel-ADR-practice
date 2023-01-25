@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\ArticleRepositoryInterface;
 use App\Models\Article;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ArticleRequest as Request;
 
 final class ArticleService extends Controller
@@ -56,6 +57,17 @@ final class ArticleService extends Controller
     {
         $article = $this->articleRepository->getArticleDetail($article_id);
         return $article;
+    }
+
+    public function editArticle(string $article_id): Article
+    {
+        $article = Article::find($article_id);
+        if (Auth::user()->can('edit', $article)) {
+            $article = $this->articleRepository->getArticleDetail($article_id);
+            return $article;
+        } else {
+            abort(403);
+        }
     }
 
     /**

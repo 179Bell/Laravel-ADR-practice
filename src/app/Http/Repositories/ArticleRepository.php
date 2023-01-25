@@ -39,7 +39,7 @@ class ArticleRepository implements ArticleRepositoryInterface
     public function deleteArticle(string $article_id): int
     {
         $article = Article::find($article_id);
-        if (Auth::user()->can('deleteArticle', $article)) {
+        if (Auth::user()->can('delete', $article)) {
             $status = Article::destroy($article_id);
         } else {
             $status = self::FAIL_STATUS;
@@ -50,7 +50,7 @@ class ArticleRepository implements ArticleRepositoryInterface
     public function updateArticle(array $data): int
     {
         $article = Article::find($data['id']);
-        if (Auth::user()->can('updateArticle', $article)) {
+        if (Auth::user()->can('update', $article)) {
             $status = Article::where('id', $data['id'])->update([
                 'title' => $data['title'],
                 'content' => $data['content']
