@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Responders;
 
-use Illuminate\Http\Response;
 use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Http\Response;
 
 final class CreateArticleResponder
 {

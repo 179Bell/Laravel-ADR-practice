@@ -6,10 +6,9 @@ namespace App\Http\Repositories;
 
 use App\Models\Article;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ArticleRepository implements ArticleRepositoryInterface
+final class ArticleRepository implements ArticleRepositoryInterface
 {
     private const FAIL_STATUS = 0;
 

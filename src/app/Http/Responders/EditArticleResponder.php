@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Responders;
 
 use App\Models\Article;
-use Illuminate\Http\Response;
 use Illuminate\Contracts\View\Factory as ViewFactory;
-
+use Illuminate\Http\Response;
 
 final class EditArticleResponder
 {
@@ -30,6 +29,6 @@ final class EditArticleResponder
  */
     public function response(Article $article): Response
     {
-        return $this->response->setContent($this->view->make('article.edit',  ['article' => $article]));
+        return $this->response->setContent($this->view->make('article.edit', ['article' => $article]));
     }
 }

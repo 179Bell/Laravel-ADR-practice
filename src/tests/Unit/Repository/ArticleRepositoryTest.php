@@ -1,15 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Repository;
 
 use App\Http\Repositories\ArticleRepository;
 use App\Models\User;
-use Database\Seeders\ArticleSeeder;
-use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ArticleRepositoryTest extends TestCase
+final class ArticleRepositoryTest extends TestCase
 {
     use RefreshDatabase;
 

@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Responders;
 
-use Illuminate\Http\Response;
 use Illuminate\Contracts\View\Factory as ViewFactory;
-use App\Models\Article as ArticleModel;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Response;
 
 final class IndexArticleResponder
 {
@@ -31,6 +30,7 @@ final class IndexArticleResponder
     public function response(Collection $articles): Response
     {
         return $this->response->setContent(
-            $this->view->make('article.index', ['articles' => $articles]));
+            $this->view->make('article.index', ['articles' => $articles])
+        );
     }
 }

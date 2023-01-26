@@ -21,8 +21,7 @@ final class UpdateArticleActions extends Controller
      */
     public function __construct(
         ArticleService $articleService,
-    )
-    {
+    ) {
         $this->articleService = $articleService;
     }
 
@@ -42,7 +41,7 @@ final class UpdateArticleActions extends Controller
         $status = $this->articleService->updateArticle($data);
         if ($status === self::SUCCESS) {
             return redirect()->route('article.index')->with('update_success', '更新に成功しました');
-        } elseif($status === self::FAIL) {
+        } elseif ($status === self::FAIL) {
             return back()->with('update_failed', '更新に失敗しました');
         }
     }

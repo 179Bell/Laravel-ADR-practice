@@ -18,8 +18,7 @@ final class PostCreateArticleActions extends Controller
      */
     public function __construct(
         ArticleService $articleService,
-    )
-    {
+    ) {
         $this->articleService = $articleService;
     }
 

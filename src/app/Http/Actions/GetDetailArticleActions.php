@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Actions;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\ArticleService;
 use App\Http\Responders\DetailArticleResponder as ArticleResponder;
-use Illuminate\Http\Response;
+use App\Http\Services\ArticleService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 final class GetDetailArticleActions extends Controller
 {
@@ -22,8 +22,7 @@ final class GetDetailArticleActions extends Controller
     public function __construct(
         ArticleService $articleService,
         ArticleResponder $articleResponder
-    )
-    {
+    ) {
         $this->service = $articleService;
         $this->responder = $articleResponder;
     }

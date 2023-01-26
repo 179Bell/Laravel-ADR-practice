@@ -9,7 +9,6 @@ use App\Http\Repositories\ArticleRepositoryInterface;
 use App\Models\Article;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ArticleRequest as Request;
 
 final class ArticleService extends Controller
 {
@@ -20,8 +19,7 @@ final class ArticleService extends Controller
      */
     public function __construct(
         ArticleRepositoryInterface $articleRepository
-    )
-    {
+    ) {
         $this->articleRepository = $articleRepository;
     }
 

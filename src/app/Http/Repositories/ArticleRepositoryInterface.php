@@ -6,7 +6,6 @@ namespace App\Http\Repositories;
 
 use App\Models\Article;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 
 interface ArticleRepositoryInterface
 {
@@ -15,7 +14,7 @@ interface ArticleRepositoryInterface
      *
      * @return Collection
      */
-    public function getAll():  Collection;
+    public function getAll(): Collection;
 
     /**
      * 記事を作成する
@@ -37,7 +36,7 @@ interface ArticleRepositoryInterface
      * 記事を削除する
      *
      * @param string $article_id
-     * @return int  $status 1:success 0:fail
+     * @return int $status 1:success 0:fail
      */
     public function deleteArticle(string $article_id): int;
 

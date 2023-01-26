@@ -1,15 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Service;
 
-use App\Http\Repositories\ArticleRepository;
-use App\Http\Services\ArticleService;
-use App\Models\Article;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ArticleServiceTest extends TestCase
+final class ArticleServiceTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -218,5 +217,3 @@ class ArticleServiceTest extends TestCase
         $this->assertSame(0, $status);
     }
 }
-
-

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ArticlePolicy
+final class ArticlePolicy
 {
     use HandlesAuthorization;
 
@@ -20,8 +22,8 @@ class ArticlePolicy
         return $user->id === $article->user_id;
     }
 
-    public function edit(User $user, Article $article){
-
+    public function edit(User $user, Article $article)
+    {
         return $user->id === $article->user_id;
     }
 }

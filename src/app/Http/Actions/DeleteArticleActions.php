@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Actions;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\ArticleService;
 use App\Http\Responders\IndexArticleResponder as ArticleResponder;
-use App\Models\User;
+use App\Http\Services\ArticleService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 final class DeleteArticleActions extends Controller
 {
@@ -26,8 +24,7 @@ final class DeleteArticleActions extends Controller
     public function __construct(
         ArticleService $articleService,
         ArticleResponder $articleResponder
-    )
-    {
+    ) {
         $this->service = $articleService;
         $this->responder = $articleResponder;
     }
@@ -41,7 +38,7 @@ final class DeleteArticleActions extends Controller
         $status = $this->service->deleteArticle($article_id);
         if ($status === self::SUCCESS) {
             return redirect()->route('article.index')->with('delete_success', '削除に成功しました');
-        } elseif($status === self::FAIL) {
+        } elseif ($status === self::FAIL) {
             return back()->with('delete_failed', '削除に失敗しました');
         }
     }
