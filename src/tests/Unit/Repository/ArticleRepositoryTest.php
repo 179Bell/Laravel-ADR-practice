@@ -71,4 +71,47 @@ class ArticleRepositoryTest extends TestCase
         $this->assertSame($article->title, $result->title);
         $this->assertSame($article->content, $result->content);
     }
+
+    /**
+     * @test
+     */
+    public function 記事の削除ができる()
+    {
+        $user = User::factory()->create();
+
+        $data = [
+            'user_id' => $user->id,
+            'title' => 'test title',
+            'content' => 'test content',
+        ];
+
+        $article = $this->articleRepository->create($data);
+        $this->actingAs($user)->articleRepository->deleteArticle($article->id);
+        $this->assertDatabaseMissing('articles', $data);
+    }
+
+    /**
+     * @test
+     */
+    public function 記事の更新ができる()
+    {
+        $user = User::factory()->create();
+
+        $data = [
+            'user_id' => $user->id,
+            'title' => 'test title',
+            'content' => 'test content',
+        ];
+
+        $article = $this->articleRepository->create($data);
+
+        $update_data = [
+            'id' => $article->id,
+            'title' => 'update title',
+            'content' => 'update content',
+        ];
+
+        $this->actingAs($user)->articleRepository->updateArticle($update_data);
+        $this->assertDatabaseHas('articles', $update_data);
+    }
 }
